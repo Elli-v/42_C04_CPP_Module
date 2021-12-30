@@ -6,10 +6,10 @@ RM = rm -f
 MAIN = megaphone.cpp
 
 $(NAME): $(MAIN)
-	$(CXX) $(MAIN) $(CXXFLAGS) -o $(NAME)
+	$(CPPC) $(MAIN) $(CPPFLAGS) -o $(NAME)
 
 all : $(NAME)
-clean:
+clean: 
 	$(RM) $(NAME)
 re:	clean all
 

@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 01:11:42 by soooh             #+#    #+#             */
-/*   Updated: 2021/12/31 00:49:32 by soooh            ###   ########.fr       */
+/*   Created: 2021/12/31 01:26:45 by soooh             #+#    #+#             */
+/*   Updated: 2021/12/31 01:38:02 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Contact.hpp"
 
-char	CharUpper(char c)
+Contact::Contact()
 {
-	if ('a' <= c && c <= 'z')
-		return (c - ('a' - 'A'));
-	return (c);
+	index = 0;
 }
 
-int		main(int argc, char **argv)
+void Contact::Add()
 {
-	int		i;
-	int		j;
-
-	(void) argc;
-	if (!argv[1])
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	for (i = 1; argv[i]; i++)
-	{
-		for (j = 0; argv[i][j]; j++)
-			std::cout << CharUpper(argv[i][j]);
-	}
-	std::cout << std::endl;
-	return (0);
+	
 }
