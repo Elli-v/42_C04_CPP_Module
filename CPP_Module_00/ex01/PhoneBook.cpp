@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 01:27:51 by soooh             #+#    #+#             */
-/*   Updated: 2021/12/31 01:38:14 by soooh            ###   ########.fr       */
+/*   Updated: 2022/01/01 02:08:37 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,25 @@ int	main(void)
 	std::string	cmd;
 	Contact contact;
 
-	while (1)
+	std::cout << "📞 Hello~ This is soooh Phonebook" << std::endl;
+	std::cout << "Save Contact   : ADD"<< std::endl;
+	std::cout << "Search Contact : SEARCH"<< std::endl;
+	std::cout << "Contact End    : EXIT"<< std::endl;
+	while (true)
 	{
-		std::cout << "ADD or SEARCH or EXIT : ";
-		std::cin >> cmd; //커맨드 입력
+		std::cout << "COMMAND        : ";
+		std::cin >> cmd;
 		if (cmd == "ADD")
-			std::cout << "hi ADD\n";
+			contact.Add();
 		else if (cmd == "SEARCH")
-			std::cout << "hi SEARCH\n";
+			contact.Search();
 		else if (cmd == "EXIT")
-		{
-			std::cout << "bye!\n";
 			return (0);
-		}
 		else
-			std::cout << "you can only use (ADD, SEARCH, EXIT)" << std::endl;
-			
+			std::cout << "===== Wrong input =====" << std::endl;
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+		if (std::cin.eof())
+			return (0);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 01:14:52 by soooh             #+#    #+#             */
-/*   Updated: 2021/12/31 01:30:00 by soooh            ###   ########.fr       */
+/*   Updated: 2022/01/01 02:11:18 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CONTACT_H
 
 # include <iostream>
-# include <iomanip> //출력 형식 조작
+# include <iomanip>
 # include <string>
 
 class Contact
@@ -28,7 +28,7 @@ class Contact
 			std::string	phone_number;
 			std::string	darkest_secret;
 		};
-		struct contact_data data[8];
+		struct contact_data book[8];
 		int index;
 	public:
 		Contact();
