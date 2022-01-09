@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 01:41:46 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/09 16:37:54 by soooh            ###   ########.fr       */
+/*   Created: 2022/01/08 14:47:35 by soooh             #+#    #+#             */
+/*   Updated: 2022/01/09 19:34:33 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
+#include <string>
+#include <iostream>
+# include <sstream>
 
-const	std::string NAME[] =
+class Zombie
 {
-	"zombie00",
-	"zombie01",
-	"zombie02",
-	"zombie03"
+	public:
+		Zombie( void );
+		Zombie( std::string name );
+		~Zombie();
+		void announce(void);
+		void setName(std::string name);
+	private:
+		std::string name;
 };
-
-int	main(void)
-{
-	Zombie stackZombie = Zombie("stackZombie");
-
-	Zombie *heapZombie = newZombie("heapZombie");
-	delete heapZombie;
-
-	for (int i = 0; i < 4; i++)
-	{
-		randomChump(NAME[i]);
-	}
-}
+Zombie* zombieHorde( int N, std::string name );
+#endif

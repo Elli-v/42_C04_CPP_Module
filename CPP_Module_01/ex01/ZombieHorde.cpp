@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ZombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 01:41:46 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/09 16:37:54 by soooh            ###   ########.fr       */
+/*   Created: 2022/01/09 17:05:46 by soooh             #+#    #+#             */
+/*   Updated: 2022/01/09 19:22:49 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-const	std::string NAME[] =
+Zombie* zombieHorde( int N, std::string name )
 {
-	"zombie00",
-	"zombie01",
-	"zombie02",
-	"zombie03"
-};
+	Zombie	*numzom = new Zombie[N];
+	std::stringstream	ss;
 
-int	main(void)
-{
-	Zombie stackZombie = Zombie("stackZombie");
-
-	Zombie *heapZombie = newZombie("heapZombie");
-	delete heapZombie;
-
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < N; i++)
 	{
-		randomChump(NAME[i]);
+		ss << i;
+		numzom[i].setName(name + ss.str());
+		numzom[i].announce();
+		ss.str("");
 	}
+	return (numzom);
 }

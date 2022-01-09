@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 01:41:46 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/09 16:37:54 by soooh            ###   ########.fr       */
+/*   Created: 2022/01/08 14:59:39 by soooh             #+#    #+#             */
+/*   Updated: 2022/01/09 17:40:24 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-const	std::string NAME[] =
+Zombie::Zombie( void )
 {
-	"zombie00",
-	"zombie01",
-	"zombie02",
-	"zombie03"
-};
-
-int	main(void)
+}
+Zombie::Zombie( std::string name )
 {
-	Zombie stackZombie = Zombie("stackZombie");
+	this->name = name;
+	announce();
+}
+void Zombie::announce(void)
+{
+	std::cout << name << " BraiiiiiiinnnzzzZ..." << std::endl;
+}
+Zombie::~Zombie()
+{
+	std::cout << name << " Grrrrrr...rr.r...r...." << std::endl;
+}
 
-	Zombie *heapZombie = newZombie("heapZombie");
-	delete heapZombie;
-
-	for (int i = 0; i < 4; i++)
-	{
-		randomChump(NAME[i]);
-	}
+void	Zombie::setName(std::string name)
+{
+	this->name = name;
 }
