@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 14:47:35 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/10 11:39:42 by soooh            ###   ########.fr       */
+/*   Created: 2022/01/10 18:40:33 by soooh             #+#    #+#             */
+/*   Updated: 2022/01/10 19:14:59 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-#include <string>
-#include <iostream>
-#include <sstream>
+#include "HumanB.hpp"
 
-class Zombie
+HumanB::~HumanB(void)
 {
-	public:
-		Zombie( void );
-		Zombie( std::string name );
-		~Zombie();
-		void announce(void);
-		void setName(std::string name);
-	private:
-		std::string name;
-};
-Zombie* zombieHorde( int N, std::string name );
-#endif
+}
+
+HumanB::HumanB(std::string name) : name(name), weapon(NULL)
+{
+}
+
+void HumanB::attack(void)
+{
+	std::cout << this->name << " attacks with his " 
+				<< this->weapon->getType() << std::endl;
+}
+
+void HumanB::setWeapon(Weapon &weapon)
+{
+	this->weapon = &weapon;
+}

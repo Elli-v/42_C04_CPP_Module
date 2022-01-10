@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 14:47:35 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/10 11:39:42 by soooh            ###   ########.fr       */
+/*   Created: 2022/01/10 17:51:42 by soooh             #+#    #+#             */
+/*   Updated: 2022/01/10 20:09:05 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
-#include <string>
-#include <iostream>
-#include <sstream>
+#include "HumanA.hpp"
 
-class Zombie
+HumanA::~HumanA(void)
 {
-	public:
-		Zombie( void );
-		Zombie( std::string name );
-		~Zombie();
-		void announce(void);
-		void setName(std::string name);
-	private:
-		std::string name;
-};
-Zombie* zombieHorde( int N, std::string name );
-#endif
+}
+
+HumanA::HumanA(std::string name, Weapon &weapon) : name(name), weapon(weapon)
+{
+}
+
+void HumanA::attack(void)
+{
+	std::cout << this->name << " attacks with his " 
+				<< this->weapon.getType() << std::endl;
+}
+
+void HumanA::setWeapon(Weapon &weapon)
+{
+	this->weapon = weapon;
+	std::cout << &weapon << std::endl;
+}
