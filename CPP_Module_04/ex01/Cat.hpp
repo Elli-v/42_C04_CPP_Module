@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/22 01:13:33 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/23 00:15:25 by soooh            ###   ########.fr       */
+/*   Created: 2022/01/22 01:20:59 by soooh             #+#    #+#             */
+/*   Updated: 2022/01/23 00:42:17 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#include <iostream>
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-class Animal
+class Cat : public Animal
 {
-	protected:
-		std::string type;
+	private:
+		Brain *brain;
 	public:
-		Animal();
-		virtual ~Animal();
-		Animal(const Animal &other); //복사생성자
-		Animal &operator=(const Animal &other); //할당생성자오버로딩
-		
-		virtual void makeSound() const;
-		std::string getType(void) const;
+		Cat();
+		~Cat();
+		Cat(const Cat &other); //복사생성자
+		Cat& operator=(const Cat &other); //할당생성자오버로딩
+		void makeSound() const;
+		void setType(std::string type);
 };
 
 #endif

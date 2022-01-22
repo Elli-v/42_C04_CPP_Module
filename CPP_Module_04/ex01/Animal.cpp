@@ -1,43 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/22 01:31:46 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/23 00:43:37 by soooh            ###   ########.fr       */
+/*   Created: 2022/01/22 01:26:34 by soooh             #+#    #+#             */
+/*   Updated: 2022/01/22 01:45:20 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Animal.hpp"
 
-Dog::Dog() : Animal()
+Animal::Animal()
 {
-	this->type = "Dog";
+	this->type = "Animal";
+	std::cout << "Hello~ " << this->type << std::endl;
 }
 
-Dog::~Dog()
+Animal::~Animal()
 {
+	std::cout << "ByeBye~ " << this->type << std::endl;
 }
 
-Dog::Dog(const Dog &other)
+Animal::Animal(const Animal &other)
 {
 	*this = other;
+	std::cout << "Hello~ " << this->type << std::endl;
 }
 
-Dog &Dog::operator=(const Dog &other)
+Animal &Animal::operator=(const Animal &other)
 {
 	this->type = other.type;
 	return (*this);
 }
 
-void Dog::makeSound() const
+void Animal::makeSound() const
 {
-	std::cout << "BoW! WoW!" << std::endl;
+	std::cout << "Animal~" << this->type << std::endl;
 }
 
-void Dog::setType(std::string type)
+std::string Animal::getType(void) const
 {
-	this->type = type;
+	return (this->type);
 }

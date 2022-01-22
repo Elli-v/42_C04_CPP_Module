@@ -1,43 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/22 01:31:46 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/23 00:43:37 by soooh            ###   ########.fr       */
+/*   Created: 2022/01/22 01:44:57 by soooh             #+#    #+#             */
+/*   Updated: 2022/01/23 00:42:42 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
-Dog::Dog() : Animal()
+Cat::Cat()
 {
-	this->type = "Dog";
+	this->type = "Cat";
+	this->brain = new Brain();
 }
 
-Dog::~Dog()
+Cat::~Cat()
 {
+	delete (this->brain);
 }
 
-Dog::Dog(const Dog &other)
+Cat::Cat(const Cat &other)
 {
 	*this = other;
 }
 
-Dog &Dog::operator=(const Dog &other)
+Cat &Cat::operator=(const Cat &other)
 {
 	this->type = other.type;
+	this->brain = new Brain(*other.brain);
 	return (*this);
 }
 
-void Dog::makeSound() const
+void Cat::makeSound() const
 {
-	std::cout << "BoW! WoW!" << std::endl;
+	std::cout << "Mew Mew" << std::endl;
 }
 
-void Dog::setType(std::string type)
+void Cat::setType(std::string type)
 {
 	this->type = type;
 }
