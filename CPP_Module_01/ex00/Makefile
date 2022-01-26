@@ -1,7 +1,7 @@
 NAME = BraiiiiiiinnnzzzZ
 
-CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 SRCS = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 INCS = -I Zombie.hpp

@@ -1,7 +1,7 @@
 NAME	= Unnecessary_violence
 
-CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 INCS = -I HumanA.hpp HumanB.hpp Weapon.hpp

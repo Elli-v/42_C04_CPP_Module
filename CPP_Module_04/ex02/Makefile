@@ -1,7 +1,7 @@
 NAME = Brain2
 
-CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 

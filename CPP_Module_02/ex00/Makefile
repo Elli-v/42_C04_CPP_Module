@@ -1,7 +1,7 @@
 NAME = My_First_Orthodox_Class
 
-CXX = clang++
-CXXFLAGS = -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 SRCS = main.cpp Fixed.cpp
 OBJT = $(SRCS:.cpp=.o)
