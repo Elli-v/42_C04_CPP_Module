@@ -1,4 +1,4 @@
-NAME = Form_Tree
+NAME = Form
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -10,12 +10,22 @@ SRCS = main.cpp \
 		RobotomyRequestForm.cpp \
 		ShrubberyCreationForm.cpp
 
-$(NAME) : $(SRCS)
-		$(CXX) $(GCCFLAG) $(SRCS) -o $@
+OBJS = $(SRCS:.cpp=.o)
+
+$(NAME) : $(OBJS)
+		$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+
+$(OBJS) : $(SRCS)
+	$(CC) $(CXXFLAGS) -c $^
 
 all : $(NAME)
-clean:
+
+clean :
+	$(RM) $(OBJS)
+
+fclean : clean
 	$(RM) $(NAME)
+
 re:	clean all
 
 .PHONY: all fclean clean re

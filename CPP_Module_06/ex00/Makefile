@@ -1,9 +1,10 @@
-NAME = Form_up
+NAME = Conversion
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp \
+		Conversion.cpp 
 
 OBJS = $(SRCS:.cpp=.o)
 
