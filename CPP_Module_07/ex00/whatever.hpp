@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   C.hpp                                              :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 23:47:29 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/29 01:35:43 by soooh            ###   ########.fr       */
+/*   Created: 2022/01/29 01:53:05 by soooh             #+#    #+#             */
+/*   Updated: 2022/01/29 01:55:20 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C_HPP
-# define C_HPP
-
-# include "Base.hpp"
-
-class	C:public Base
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
+#include <iostream>
+template <typename T>
+void swap(T& a, T& b)
 {
-	private:
-	public:
-		C() {};
-		~C() {};
-		C(const C &other) { *this = other; };
-		C &operator=(C const &other)
-		{
-			if (this != &other)
-				Base::operator=(other);
-			return *this;
-		};
-};
+	T temp;
+	temp = a;
+	a = b;
+	b = temp;
+}
+
+template <typename T>
+T& min(T& a, T& b)
+{
+	if (a < b)
+		return a;
+	else
+		return b;
+}
+
+template <typename T>
+T& max(T& a, T& b)
+{
+	if (a > b)
+		return a;
+	else
+		return b;
+}
 
 #endif

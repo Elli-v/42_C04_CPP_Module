@@ -5,45 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 01:06:02 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/29 01:31:11 by soooh            ###   ########.fr       */
+/*   Created: 2022/01/29 01:53:16 by soooh             #+#    #+#             */
+/*   Updated: 2022/01/29 01:53:25 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
+#include "whatever.hpp"
 
-Base * generate()
+int main( void )
 {
-	int n = rand() % 3;
-	if (n == 0)
-		return new A();
-	else if (n == 1)
-		return new B();
-	else
-		return new C();	
-}
+	int a = 2;
+	int b = 3;
 
-void	identify(Base* base)
-{
-	if (dynamic_cast<A *>(base))
-		std::cout << "A" << std::endl;
-	else if (dynamic_cast<B *>(base))
-		std::cout << "B" << std::endl;
-	else
-		std::cout << "C" << std::endl;	
-}
+	::swap( a, b );
+	std::cout << "a = " << a << ", b = " << b << std::endl;
+	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
 
-int	main()
-{
-	srand(time(NULL));
-	for (int i = 0; i < 10; ++i)
-	{
-		Base *base = generate();
-		identify(base);
-	}
+	std::string c = "chaine1";
+	std::string d = "chaine2";
+
+	::swap(c, d);
+	std::cout << "c = " << c << ", d = " << d << std::endl;
+	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+
 	return 0;
 }
