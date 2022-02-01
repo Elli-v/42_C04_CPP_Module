@@ -6,31 +6,30 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 01:11:42 by soooh             #+#    #+#             */
-/*   Updated: 2021/12/31 00:49:32 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/01 01:58:20 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-char	CharUpper(char c)
+char	*CharUpper(char *c)
 {
-	if ('a' <= c && c <= 'z')
-		return (c - ('a' - 'A'));
+	for (int i = 0; c[i]; i++)
+		c[i] = std::toupper(c[i]);
 	return (c);
 }
 
 int		main(int argc, char **argv)
 {
 	int		i;
-	int		j;
+	// int		j;
 
 	(void) argc;
 	if (!argv[1])
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	for (i = 1; argv[i]; i++)
 	{
-		for (j = 0; argv[i][j]; j++)
-			std::cout << CharUpper(argv[i][j]);
+		std::cout << CharUpper(argv[i]);
 	}
 	std::cout << std::endl;
 	return (0);
