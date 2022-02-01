@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.cpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 01:26:45 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/01 02:27:37 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/01 16:59:54 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	Contact::Search()
 	i--;
 	if (index == 0)
 		std::cout << "oh.. Phonebook is empty" << std::endl;
-	else if (i < index && i > 0)
+	else if (i <= index && i >= 0)
 	{
 		std::cout << "Fist name      : " << book[i].first_name << std::endl;
 		std::cout << "Last name      : " << book[i].last_name << std::endl;
