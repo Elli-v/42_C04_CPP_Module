@@ -1,40 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/31 01:14:52 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/01 02:11:18 by soooh            ###   ########.fr       */
+/*   Created: 2022/02/01 23:53:54 by soooh             #+#    #+#             */
+/*   Updated: 2022/02/02 18:57:58 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-# define CONTACT_H
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
 # include <iostream>
 # include <iomanip>
+# include <sstream>
 # include <string>
 
 class Contact
 {
-	private:
-		struct contact_data
-		{
-			std::string	first_name;
-			std::string	last_name;
-			std::string	nickname;
-			std::string	phone_number;
-			std::string	darkest_secret;
-		};
-		struct contact_data book[8];
-		int index;
 	public:
-		Contact();
-		void Add();
-		void Search();
-		void Exit();
+		std::string	_first_name;
+		std::string	_last_name;
+		std::string	_nickname;
+		std::string	_phone_number;
+		std::string	_darkest_secret;
+		Contact() {};
+};
+
+class PhoneBook
+{
+	private:
+		Contact Book[8];
+		size_t	index;
+		void	addContact(size_t index);
+  		void	searchContact(size_t index);
+  		void	searchDetail(size_t index);
+	public:
+		PhoneBook();
+		~PhoneBook();
+  		void	Add();
+  		void	Search();
 };
 
 #endif
