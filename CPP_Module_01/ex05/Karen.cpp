@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 00:14:21 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/12 00:48:22 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/04 01:04:18 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,18 @@ void	Karen::complain( std::string level )
 		"ERROR"
 	};
 
-	for(int i = 0; i < 4; i++)
+	int i;
+	for(i = 0; i < 4; i++)
 	{
 		if (levels[i] == level)
+		{
 			(this->*funcs[i])();
+			break;
+		}
 	}
-
+	if (i == 4)
+		std::cout << "[ NONE! ]" << std::endl <<
+		"Probably complaining about insignificant problems." << std::endl;	
 }
 
 void	Karen::debug( void )

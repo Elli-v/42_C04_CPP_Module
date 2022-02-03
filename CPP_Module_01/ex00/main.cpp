@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 01:41:46 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/09 16:37:54 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/03 23:37:16 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ const	std::string NAME[] =
 int	main(void)
 {
 	Zombie stackZombie = Zombie("stackZombie");
-
+	stackZombie.announce();
 	Zombie *heapZombie = newZombie("heapZombie");
+	heapZombie->announce();
 	delete heapZombie;
 
 	for (int i = 0; i < 4; i++)
-	{
 		randomChump(NAME[i]);
-	}
+	return (0);
 }

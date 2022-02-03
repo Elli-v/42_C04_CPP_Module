@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 00:14:21 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/12 01:40:53 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/04 01:36:10 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,43 +28,33 @@ void	Karen::complain( std::string level )
 		&Karen::warning,
 		&Karen::error
 	};
-	std::string levels[4] = {
-		"DEBUG",
-		"INFO",
-		"WARNING",
-		"ERROR"
-	};
+	int i = ("DEBUG" == level) * 1
+		+ ("INFO" == level) * 2
+		+ ("WARNING" == level) * 3
+		+ ("ERROR" == level) * 4;
 
-	int	flag = 0;
-	for(int i = 0; i < 4; i++)
+	switch (i)
 	{
-		if (levels[i] == level)
-		{
-			switch (i)
-			{
-				case 0:
-						(this->*funcs[0])();
-						flag++;
-				case 1:
-						if (i != 1)
-							std::cout << std::endl;
-						(this->*funcs[1])();
-						flag++;
-				case 2:
-						if (i != 2)
-							std::cout << std::endl;
-						(this->*funcs[2])();
-						flag++;
-				case 3:
-						if (i != 3)
-							std::cout << std::endl;
-						(this->*funcs[3])();
-						flag++;
-			}
-		}
+		case 0:
+			std::cout << "[ NONE! ]" << std::endl <<
+			"Probably complaining about insignificant problems." << std::endl;
+			break;	
+		case 1:
+			(this->*funcs[0])();
+			i++;
+			std::cout << std::endl;
+		case 2:
+			(this->*funcs[1])();
+			i++;
+			std::cout << std::endl;
+		case 3:
+			(this->*funcs[2])();
+			i++;
+			std::cout << std::endl;
+		case 4:
+			(this->*funcs[3])();
+			i++;
 	}
-	if (flag == 0)
-		std::cout << "[ Probably complaining about insignificant problems ]" <<std::endl;
 }
 
 void	Karen::debug( void )

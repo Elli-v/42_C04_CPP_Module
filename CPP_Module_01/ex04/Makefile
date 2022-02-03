@@ -15,7 +15,7 @@ all : $(NAME)
 clean:
 	$(RM) $(NAME)
 fclean:
-	$(RM) $(OBJT) $(NAME)
+	$(RM) $(OBJT) $(NAME) soooh.replace
 re:	clean all
 
 .PHONY: all fclean clean re

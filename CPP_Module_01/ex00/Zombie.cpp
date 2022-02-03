@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 14:59:39 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/09 01:38:30 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/03 23:35:07 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ Zombie::Zombie( void )
 Zombie::Zombie( std::string name )
 {
 	this->name = name;
-	announce();
 }
 void Zombie::announce(void)
 {
