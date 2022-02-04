@@ -2,25 +2,36 @@
 
 int main(void)
 {
-	FragTrap fragtrap("soooh");
-	FragTrap fragtrap2;
-	fragtrap2 = FragTrap("elli");
-	FragTrap fragtrap3(fragtrap);
-
-	fragtrap.attack("Enemy");
-	fragtrap.takeDamage(5);
-	fragtrap.beRepaired(5);
-	fragtrap.highFivesGuys();
+	FragTrap ft1("ft1");
+	FragTrap ft2 = FragTrap("FT2");
+	FragTrap ft3(ft1);
 	
-	fragtrap2.attack("Enemy2");
-	fragtrap2.takeDamage(4);
-	fragtrap2.beRepaired(2);
-	fragtrap2.highFivesGuys();
+	std::cout << std::endl;
+	std::cout << "[====================Round 1====================]" << std::endl;
 
-	fragtrap3.attack("Enemy3");
-	fragtrap3.takeDamage(9);
-	fragtrap3.beRepaired(3);
-	fragtrap3.highFivesGuys();
+	ft1.attack("Enemy");
+	ft1.takeDamage(110);
+	ft1.beRepaired(5);
+	ft1.highFivesGuys();
+	
+	std::cout << std::endl;
+	std::cout << "[====================Round 2====================]" << std::endl;
+	
+	ft2.attack("Enemy2");
+	ft2.takeDamage(4);
+	ft2.beRepaired(2);
+	ft2.takeDamage(8);
+	ft2.highFivesGuys();
+	
+	std::cout << std::endl;
+	std::cout << "[====================Round 3====================]" << std::endl;
+
+	ft3.attack("Enemy3");
+	ft3.takeDamage(9);
+	ft3.beRepaired(3);
+	ft3.highFivesGuys();
+
+	std::cout << std::endl;
 
 	return (0);
 }

@@ -6,23 +6,20 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 01:52:18 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/19 02:26:32 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/04 21:43:56 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void)
+ClapTrap::ClapTrap(void) : Hitpoints(10), Energypoints(10), Attackdamage(0)
 {
+	std::cout << "ClapTrap Default Constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string Name)
+ClapTrap::ClapTrap(std::string Name) :  Name(Name), Hitpoints(10), Energypoints(10), Attackdamage(0)
 {
-	this->Name = Name;
-	this->Hitpoints = 10;
-	this->Energypoints = 10;
-	this->Attackdamage = 0;
-	std::cout << "ClapTrap " << this->Name << " appeard" << std::endl;
+	std::cout << "ClapTrap Default Constructor called | Name = [" << Name << "]" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
@@ -33,10 +30,13 @@ ClapTrap::~ClapTrap(void)
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
 	*this = other;
+	Name = Name + "_copy";
+	std::cout << "ClapTrap Copy Constructor called | Name = [" << Name << "]" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
+	std::cout << "ClapTrap Assignation operator called\n";
 	this->Name = other.Name;
 	this->Hitpoints = other.Hitpoints;
 	this->Energypoints = other.Energypoints;
@@ -54,17 +54,34 @@ void	ClapTrap::attack(std::string const & target)
 }
 void	ClapTrap::takeDamage(unsigned int amount)
 {
+	std::cout << "ClapTrap [" << this->Name << "] Currently, Hitpoints is [" << Hitpoints << "]" << std::endl;
+	
 	std::cout << GREEN;
-	this->Hitpoints -= amount;
-	std::cout << "ClapTrap [" << this->Name << "] take Damages [" << amount << "]" << std::endl;
-	std::cout << "ClapTrap [" << this->Name << "] Hitpoints is [" << this->Hitpoints << "]" << std::endl;
+	if (Hitpoints > 0)
+	{
+		Hitpoints -= amount;
+		if (Hitpoints < 0)
+			Hitpoints = 0;
+		std::cout << "ClapTrap [" << this->Name << "] take Damages [" << amount << "]" << std::endl;
+		std::cout << "ClapTrap [" << this->Name << "] Hitpoints is [" << Hitpoints << "]" << std::endl;
+		if (Hitpoints == 0)
+			std::cout << "ClapTrap [" << this->Name << "] is destroyed" << std::endl;
+	}
+	else
+		std::cout << "ClapTrap [" << this->Name << "] destroyed already.. :(" << std::endl;
+	
 	std::cout << RESET;
 }
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	std::cout << CYAN;
-	this->Hitpoints += amount;
-	std::cout << "ClapTrap [" << this->Name << "] is repaired [" << amount << "]" << std::endl;
-	std::cout << "ClapTrap [" << this->Name << "] Hitpoints is [" << this->Hitpoints << "]" << std::endl;
+	if (!Hitpoints)
+		std::cout << "ClapTrap [" << this->Name << "] destroyed already.. :(" << std::endl;
+	else
+	{
+		Hitpoints += amount;
+		std::cout << "ClapTrap [" << this->Name << "] is repaired [" << amount << "]" << std::endl;
+		std::cout << "ClapTrap [" << this->Name << "] Hitpoints is [" << Hitpoints << "]" << std::endl;
+	}
 	std::cout << RESET;
 }
