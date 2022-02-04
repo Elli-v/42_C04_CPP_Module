@@ -6,23 +6,20 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 22:48:17 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/19 22:53:08 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/05 01:49:37 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void)
+FragTrap::FragTrap(void) : ClapTrap(100, 100, 30)
 {
+	std::cout << "FragTrap Default Constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(std::string Name)
+FragTrap::FragTrap(std::string Name) : ClapTrap(Name, 100, 100, 30)
 {
-	this->Name = Name;
-	this->Hitpoints = 100;
-	this->Energypoints = 100;
-	this->Attackdamage = 30;
-	std::cout << "FragTrap " << this->Name << " appeard" << std::endl;
+	std::cout << "FragTrap Default Constructor called | Name = [" << Name << "]" << std::endl;
 }
 
 FragTrap::~FragTrap(void)
@@ -30,27 +27,21 @@ FragTrap::~FragTrap(void)
 	std::cout << "FragTrap " << this->Name << " disappeard" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &other)
+FragTrap::FragTrap(const FragTrap &other):ClapTrap(other)
 {
-	*this = other;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &other)
 {
-	this->Name = other.Name;
-	this->Hitpoints = other.Hitpoints;
-	this->Energypoints = other.Energypoints;
-	this->Attackdamage = other.Attackdamage;
+	ClapTrap::operator=(other);
 	
 	return (*this);
 }
 
 void	FragTrap::attack(std::string const & target)
 {
-	std::cout << RED;
-	std::cout << "FragTrap ";
-	std::cout << RESET;
-	this->ClapTrap::attack(target);
+	std::cout << "FragTrap [" << Name << "] attacks [" << target
+	<< "], causing [" << Attackdamage << "] points of damage!" << std::endl;
 }
 
 void	FragTrap::highFivesGuys(void)

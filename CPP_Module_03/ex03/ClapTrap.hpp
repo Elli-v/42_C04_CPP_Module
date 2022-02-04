@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 01:36:54 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/19 22:29:57 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/04 21:00:08 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class ClapTrap
 	public:
 		ClapTrap();
 		ClapTrap(std::string Name);
+		ClapTrap(int Hitpoints, int Energypoints, int Attackdamage);
+		ClapTrap(std::string &Name, int Hitpoints, int Energypoints, int Attackdamage);
 		~ClapTrap();
 		ClapTrap(const ClapTrap &other); //복사생성자
 		ClapTrap &operator=(const ClapTrap &other); //할당생성자오버로딩

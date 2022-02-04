@@ -6,29 +6,33 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 00:45:10 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/20 01:33:27 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/05 02:01:51 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void)
+DiamondTrap::DiamondTrap(void) : ScavTrap(), FragTrap()
 {
-}
-
-DiamondTrap::DiamondTrap(std::string Name) 
-	: ClapTrap(Name + "_clap_name"), ScavTrap(Name + "_clap_name"), FragTrap(Name + "_clap_name")
-{
-	this->Name = Name;
+	std::cout << "DiamondTrap Default Constructor called\n";
 	this->Hitpoints = FragTrap::Hitpoints;
 	this->Energypoints = ScavTrap::Energypoints;
 	this->Attackdamage = FragTrap::Attackdamage;
-	std::cout << "DiamondTrap " << this->Name << " appeard" << std::endl;
+}
+
+DiamondTrap::DiamondTrap(std::string Name) : ClapTrap(Name), ScavTrap(Name), FragTrap(Name)
+{
+	std::cout << "DiamondTrap Default Constructor called | Name = [" << Name << "]" << std::endl;
+	this->Name = Name;
+	ClapTrap::Name = Name + "_clap_name";
+	this->Hitpoints = FragTrap::Hitpoints;
+	this->Energypoints = ScavTrap::Energypoints;
+	this->Attackdamage = FragTrap::Attackdamage;
 }
 
 DiamondTrap::~DiamondTrap(void)
 {
-	std::cout << "DiamondTrap " << this->Name << " disappeard" << std::endl;
+	std::cout << "DiamondTrap [" << this->Name << "] disappeard" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &other)
@@ -38,10 +42,8 @@ DiamondTrap::DiamondTrap(const DiamondTrap &other)
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other)
 {
+	ClapTrap::operator=(other);
 	this->Name = other.Name;
-	this->Hitpoints = other.Hitpoints;
-	this->Energypoints = other.Energypoints;
-	this->Attackdamage = other.Attackdamage;
 	
 	return (*this);
 }
