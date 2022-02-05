@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 01:16:30 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/22 01:56:23 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/05 21:07:42 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ class Dog : public Animal
 		~Dog();
 		Dog(const Dog &other); //복사생성자
 		Dog& operator=(const Dog &other); //할당생성자오버로딩
-		void makeSound() const;
+		Dog(std::string& type);
+		virtual void makeSound() const;
 		void setType(std::string type);
 };
 

@@ -6,46 +6,64 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 01:31:46 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/23 00:44:01 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/05 23:01:36 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal()
+Dog::Dog():Animal("Dog")
 {
-	this->type = "Dog";
-	this->brain = new Brain();
+	std::cout << RED;
+	std::cout << "🐶 [ " << type << " ] Default Constructor called" << std::endl;
+	brain = new Brain();
+	std::cout << RESET;
 }
 
 Dog::~Dog()
 {
-	delete (this->brain);
+	std::cout << RED;
+	std::cout << "🐶 [ " << type << " ] Destructor called" << std::endl;
+	delete brain;
+	std::cout << RESET;
 }
 
-Dog::Dog(const Dog &other)
+Dog::Dog(const Dog &other):Animal(other)
 {
+	std::cout << RED;
+	std::cout << "🐩 [ " << type << " ] Copy Constructor called" << std::endl;
+	brain = new Brain();
 	*this = other;
+	std::cout << RESET;
 }
 
 Dog &Dog::operator=(const Dog &other)
 {
-	this->type = other.type;
-	this->brain = new Brain(*other.brain);
+	std::cout << RED;
+	std::cout << "🦮 [ " << type << " ] Assignation operator called" << std::endl;
+	*brain = *(other.brain);
+	std::cout << RESET;
 	return (*this);
 }
 
 void Dog::makeSound() const
 {
-	std::cout << "BoW! WoW!" << std::endl;
+	std::cout << RED;
+	std::cout << "🐶 [ " << type << " ] Mew Mew" << std::endl;
+	std::cout << RESET;
 }
 
-void Dog::setType(std::string type)
+Brain*	Dog::getBrain()
 {
-	this->type = type;
+	return brain;
 }
 
-Brain *Dog::getBrain() const
+std::string	Dog::getBrainIdea(unsigned int index)
 {
-	return this->brain;
+	return brain->getIdea(index);
+}
+
+int	Dog::addBrainIdea(std::string idea)
+{
+	return brain->addIdea(idea);
 }

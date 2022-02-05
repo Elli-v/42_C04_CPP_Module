@@ -6,41 +6,64 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 01:44:57 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/23 00:42:42 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/05 23:02:05 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat():Animal("Cat")
 {
-	this->type = "Cat";
-	this->brain = new Brain();
+	std::cout << YELLOW;
+	std::cout << "🐱 [ " << type << " ] Default Constructor called" << std::endl;
+	brain = new Brain();
+	std::cout << RESET;
 }
 
 Cat::~Cat()
 {
-	delete (this->brain);
+	std::cout << YELLOW;
+	std::cout << "🐱 [ " << type << " ] Destructor called" << std::endl;
+	std::cout << RESET;
+	delete brain;
 }
 
-Cat::Cat(const Cat &other)
+Cat::Cat(const Cat &other):Animal(other)
 {
+	std::cout << YELLOW;
+	std::cout << "🐈 [ " << type << " ] Copy Constructor called" << std::endl;
+	brain = new Brain();
 	*this = other;
+	std::cout << RESET;
 }
 
 Cat &Cat::operator=(const Cat &other)
 {
-	this->type = other.type;
-	this->brain = new Brain(*other.brain);
+	std::cout << YELLOW;
+	std::cout << "🐯 [ " << type << " ] Assignation operator called" << std::endl;
+	*brain = *(other.brain);
+	std::cout << RESET;
 	return (*this);
 }
 
 void Cat::makeSound() const
 {
-	std::cout << "Mew Mew" << std::endl;
+	std::cout << YELLOW;
+	std::cout << "🐱 [ " << type << " ] Mew Mew" << std::endl;
+	std::cout << RESET;
 }
 
-void Cat::setType(std::string type)
+Brain*	Cat::getBrain()
 {
-	this->type = type;
+	return brain;
+}
+
+std::string	Cat::getBrainIdea(unsigned int index)
+{
+	return brain->getIdea(index);
+}
+
+int	Cat::addBrainIdea(std::string idea)
+{
+	return brain->addIdea(idea);
 }

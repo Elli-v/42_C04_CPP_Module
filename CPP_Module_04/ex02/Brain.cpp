@@ -6,45 +6,64 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 00:26:19 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/23 00:41:45 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/05 21:59:04 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Brain.hpp"
 
-Brain::Brain()
+Brain::Brain():cnt(0)
 {
-	std::cout << "This is Brain🧠" << std::endl;
-	const std::string ideas[] = { "🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐯", "🐸", "🦄" };
-
-	for (int i = 0; i < 100; ++i)
-	{
-		this->ideas[i] = ideas[rand() % (sizeof(ideas) / sizeof(std::string))];
-		//랜덤으로 값 출력해서 깊은 복사했을 때 제대로 복사 되었는지 확인해야 함
-		std::cout << " " << this->ideas[i];
-	}
-	std::cout << std::endl;
+	std::cout << CYAN;
+	std::cout << "Brain🧠 Default Constructor called" << std::endl;
+	std::cout << RESET;
 }
 
 Brain::~Brain()
 {
-	std::cout << "ByeBye Brain🧠" << std::endl;
+	std::cout << CYAN;
+	std::cout << "Brain🧠 Destructor called" << std::endl;
+	std::cout << RESET;
 }
 
 Brain::Brain(const Brain &other)
 {
-	for (int i = 0;i < 100; i++)
-		this->ideas[i] = other.ideas[i];
+	std::cout << CYAN;
+	std::cout << "Brain🧠 Copy Constructor called" << std::endl;
+	std::cout << RESET;
+	*this = other;
 }
 
 Brain &Brain::operator=(const Brain &other)
 {
-	for (int i = 0;i < 100; i++)
-		this->ideas[i] = other.ideas[i];
+	std::cout << CYAN;
+	std::cout << "Brain🧠 Assignation operator called" << std::endl;
+	for (cnt = 0; cnt < other.cnt; cnt++)
+		ideas[cnt] = other.ideas[cnt];
+	std::cout << RESET;
 	return (*this);
 }
 
-std::string const &Brain::getIdea(int index) const
+std::string	Brain::getIdea(unsigned int index) const
 {
-	return this->ideas[index];
+	std::cout << CYAN;
+	if (index >= 100 || ideas[index].empty())
+	{
+		std::cout << "Wrong index" << std::endl;
+		return (NULL) ;
+	}
+	std::cout << RESET;
+	return (ideas[index]);
+}
+
+int Brain::addIdea(const std::string& idea)
+{
+	if (cnt < 100)
+	{
+		ideas[cnt] = idea;
+		cnt++;
+		return (cnt);
+	}
+	std::cout << "Idea cannot add because Brain is full already" << std::endl;
+	return (-1) ;
 }
