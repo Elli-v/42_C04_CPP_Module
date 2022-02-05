@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 01:47:24 by soooh             #+#    #+#             */
-/*   Updated: 2022/02/05 16:08:08 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/05 23:36:23 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ WrongAnimal::WrongAnimal(const WrongAnimal &other)
 	std::cout << CYAN;
 	*this = other;
 	type = type + "_copy";
-	std::cout << "WrongAnimal Copy Constructor = [" << type << "] called" << std::endl;
+	std::cout << "WrongAnimal Copy Constructor [" << type << "] called" << std::endl;
 	std::cout << RESET;
 }
 
@@ -47,14 +47,14 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
 WrongAnimal::WrongAnimal(const std::string& type):type(type)
 {
 	std::cout << CYAN;
-	std::cout << "WrongAnimal Constructor with type = [" << type << "] called" << std::endl;
+	std::cout << "WrongAnimal Constructor with type [" << type << "] called" << std::endl;
 	std::cout << RESET;
 }
 
 void WrongAnimal::makeSound() const
 {
 	std::cout << CYAN;
-	std::cout << "?? ?? WrongAnimal cannot make sound" << this->type << std::endl;
+	std::cout << "?? ?? WrongAnimal cannot make sound [" << type << "]" << std::endl;
 	std::cout << RESET;
 }
 

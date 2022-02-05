@@ -16,9 +16,11 @@ int main()
 	dog->makeSound();
 	meta->makeSound();	
 
+	std::cout << "\n==================== [ Wrong Animal ] ====================\n\n" ;
 	const WrongAnimal *wrong = new WrongCat();
 	std::cout << wrong->getType() << " " << std::endl;
 	wrong->makeSound();
+	
 	delete meta;
 	delete cat;
 	delete dog;

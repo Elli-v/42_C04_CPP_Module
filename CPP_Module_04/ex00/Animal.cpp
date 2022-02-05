@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 01:26:34 by soooh             #+#    #+#             */
-/*   Updated: 2022/02/05 16:38:41 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/05 23:36:19 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Animal::Animal(const std::string& type):type(type)
 
 void Animal::makeSound() const
 {
-	std::cout << "?? ?? What animal are you?" << this->type << std::endl;
+	std::cout << "?? ?? What animal are you? [" << type << "]" << std::endl;
 }
 
 std::string Animal::getType(void) const

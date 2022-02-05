@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 01:26:34 by soooh             #+#    #+#             */
-/*   Updated: 2022/02/05 23:21:53 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 00:05:54 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,8 @@ std::string Animal::getType(void) const
 	std::cout << "Animal [ " << type << " ] getType function called" << std::endl;
 	return (this->type);
 }
+
+// void Animal::makeSound() const
+// {
+// 	std::cout << " [ " << type << " ] ?? ?? What animal are you?" << this->type << std::endl;
+// }
