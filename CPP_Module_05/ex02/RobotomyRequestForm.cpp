@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 03:54:00 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/27 16:05:33 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 02:21:41 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
 {
 	this->Form::operator=(other);
+	target = other.target;
 	return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 03:22:51 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/27 15:50:37 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 02:21:39 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
-	this->Form::operator=(other);
+	Form::operator=(other);
+	target = other.target;
 	return *this;
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intern.cpp                                         :+:      :+:    :+:   */
+/*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:50:20 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/27 22:40:18 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 02:44:43 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,40 +38,34 @@ Form*	Intern::makePresidential(std::string& target)
 
 Form*	Intern::makeForm(std::string form, std::string target)
 {
+	Form	*ret = NULL;
 	std::cout << "<< create [ " << form << " ]  for \"" << target << "\" >>\n";
-	Form*	(Intern::*func[])(std::string&) = {
-		&Intern::makeShrubbery,
-		&Intern::makeRobotomy,
-		&Intern::makePresidential
-	};
-	new ShrubberyCreationForm(target);
-	new RobotomyRequestForm(target);
-	new PresidentialPardonForm(target);
-	std::string	formList[] = {
-		"shrubbery create",
-		"robotomy request",
-		"presidential pardon"
-	};
-	int i = 0;
-	while (i < 3)
+	
+	int num = ("shrubbery create" == form) * 1
+			+ ("robotomy request" == form) * 2
+			+ ("presidential pardon" == form) * 3;
+
+	std::cout << "\nIntern creates " ;
+	switch (num)
 	{
-		if (formList[i] == form)
+		case 0:
+			std::cout << ">> Unknown Form <<" << std::endl;
 			break;
-		else
-			i++;
+		case 1:
+			std::cout << "[ " << form << " ] form. This form's target is \" " << target << " \".\n";
+			ret = new ShrubberyCreationForm(target);
+			break;
+		case 2:
+			std::cout << "[ " << form << " ] form. This form's target is \" " << target << " \".\n";
+			ret = new RobotomyRequestForm(target);
+			break;
+		case 3:
+			std::cout << "[ " << form << " ] form. This form's target is \" " << target << " \".\n";
+			ret = new PresidentialPardonForm(target);
+			break;
 	}
-	try
-	{
-		if(i == 3)
-			throw(UnknownFormException());
-		std::cout << "\tIntern creates [ " << form << " ] form. This form's target is \" " << target << " \".\n";
-		return (this->*func[i])(target);
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what();
-	}
-	return NULL;
+
+	return ret;
 }
 
 const char*	Intern::UnknownFormException::what() const throw()
