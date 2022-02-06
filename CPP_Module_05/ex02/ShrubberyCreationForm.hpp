@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 03:18:47 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/27 04:11:12 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 16:31:08 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 
 class ShrubberyCreationForm: public Form
 {
-	private:
-		std::string		target;
-	public:
-		ShrubberyCreationForm();
-		~ShrubberyCreationForm();
-		ShrubberyCreationForm(const std::string& target);
-		ShrubberyCreationForm(const ShrubberyCreationForm &other); //복사생성자
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm &other); //할당생성자오버로딩
+    private:
+      std::string		target;
+    public:
+      ShrubberyCreationForm();
+      ~ShrubberyCreationForm();
+      ShrubberyCreationForm(const std::string& target);
+      ShrubberyCreationForm(const ShrubberyCreationForm &other); //복사생성자
+      ShrubberyCreationForm& operator=(const ShrubberyCreationForm &other); //할당생성자오버로딩
 
-		std::string const & getTarget() const;
-		virtual void execute(Bureaucrat const & executor) const;		
+      std::string const & getTarget() const;
+      virtual void execute(Bureaucrat const & executor) const;		
 };
 
 #define TREE_ASCII_ART "\

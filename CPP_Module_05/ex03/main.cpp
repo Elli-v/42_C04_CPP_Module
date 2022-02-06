@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 00:45:26 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/27 22:38:23 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 17:02:54 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,20 @@ void	InternMakeForm(std::string formName, std::string target)
 
 	if (form)
 	{
-		std::cout << "\nResult : SUCCESS\n";
+		std::cout << YELLOW;
+		std::cout << "\nResult : SUCCESS\n\n";
 		std::cout << *form;
-		std::cout << "[ Target ]\n\t";
+		std::cout << RESET;
+		std::cout << "\n[ Target ]\n\t";
 		std::cout << (*(RobotomyRequestForm*)form).getTarget() << std::endl;
 		delete form;
 	}
 	else
+	{
+		std::cout << RED;
 		std::cout << "\nResult : FAIL\n";
+		std::cout << RESET;
+	}
 }
 
 int		main()

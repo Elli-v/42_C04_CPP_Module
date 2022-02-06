@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 00:33:21 by soooh             #+#    #+#             */
-/*   Updated: 2022/02/06 01:57:36 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 16:14:39 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Bureaucrat::Bureaucrat() { std::cout << "Bureaucrat called" << std::endl; }
 
 Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat " << name << " Destructor called" << std::endl; }
 
-Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade)
+Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade):name(name)
 {
 	std::cout << "Bureaucrat name: " << name << ", grade: " << grade << " called" << std::endl;
 
@@ -26,7 +26,6 @@ Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade)
 			throw (GradeTooHighException());
 		if (grade > 150)
 			throw (GradeTooLowException());
-		this->name = name;
 		this->grade = grade;
 	}
 	catch(const std::exception& e)

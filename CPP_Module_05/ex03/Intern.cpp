@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 21:50:20 by soooh             #+#    #+#             */
-/*   Updated: 2022/02/06 02:44:43 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 17:04:29 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,37 +38,40 @@ Form*	Intern::makePresidential(std::string& target)
 
 Form*	Intern::makeForm(std::string form, std::string target)
 {
-	Form	*ret = NULL;
-	std::cout << "<< create [ " << form << " ]  for \"" << target << "\" >>\n";
-	
-	int num = ("shrubbery create" == form) * 1
-			+ ("robotomy request" == form) * 2
-			+ ("presidential pardon" == form) * 3;
+	std::cout << GREEN;
+	std::cout << "<< create [ " << form << " ]  for \"" << target << "\" >>\n\n";
+	std::cout << RESET;
+	try
+	{	
+		int num = ("shrubbery create" == form) * 1
+				+ ("robotomy request" == form) * 2
+				+ ("presidential pardon" == form) * 3;
 
-	std::cout << "\nIntern creates " ;
-	switch (num)
-	{
-		case 0:
-			std::cout << ">> Unknown Form <<" << std::endl;
-			break;
-		case 1:
-			std::cout << "[ " << form << " ] form. This form's target is \" " << target << " \".\n";
-			ret = new ShrubberyCreationForm(target);
-			break;
-		case 2:
-			std::cout << "[ " << form << " ] form. This form's target is \" " << target << " \".\n";
-			ret = new RobotomyRequestForm(target);
-			break;
-		case 3:
-			std::cout << "[ " << form << " ] form. This form's target is \" " << target << " \".\n";
-			ret = new PresidentialPardonForm(target);
-			break;
+		switch (num - 1)
+		{
+			case 0:
+				std::cout << "\nIntern creates [ " << form << " ] form. This form's target is \" " << target << " \".\n";
+				return new ShrubberyCreationForm(target);
+				break;
+			case 1:
+				std::cout << "\nIntern creates [ " << form << " ] form. This form's target is \" " << target << " \".\n";
+				return new RobotomyRequestForm(target);
+				break;
+			case 2:
+				std::cout << "\nIntern creates [ " << form << " ] form. This form's target is \" " << target << " \".\n";
+				return new PresidentialPardonForm(target);
+				break;
+		}
+		throw UnknownFormException();
 	}
-
-	return ret;
+	catch(const std::exception& e)
+	{
+		std::cerr << "Intern cannot create [ " << form << " ] because [ " << e.what() << " ]" << std::endl;
+    	return NULL;
+	}	
 }
 
 const char*	Intern::UnknownFormException::what() const throw()
 {
-	return (">> Unknown Form <<"); 
+	return ("No Matching Type"); 
 }

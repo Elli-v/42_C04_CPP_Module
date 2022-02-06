@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 00:33:21 by soooh             #+#    #+#             */
-/*   Updated: 2022/02/06 02:45:59 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 16:40:01 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	Bureaucrat::signForm(Form& form)
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+		std::cout << "[" << name << "] cannot sign [" << form.getName() << "] because " << e.what() << std::endl;
 	}	
 }
 
@@ -120,11 +120,11 @@ void		Bureaucrat::executeForm(Form const & form)
 	try
 	{
 		form.execute(*this);
-		std::cout << "Bureaucrat >> " << name << " execute " << form.getName() << std::endl;
+		std::cout << "Bureaucrat >> [" << name << "] execute [" << form.getName() << "]" << std::endl;
 	}
 	catch(std::exception& e)
 	{
-		std::cerr << "Bureaucrat >> " << name << " cannot execute " << form.getName() << " because ";
+		std::cerr << "Bureaucrat >> [" << name << "] cannot execute [" << form.getName() << "] because ";
 		std::cerr << e.what() << std::endl;
 	}
 }

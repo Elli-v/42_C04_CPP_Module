@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 01:44:06 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/27 04:06:42 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 17:04:03 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define FORM_HPP
 
 # include "Bureaucrat.hpp"
+
+# define CYAN "\e[36m"
+# define GREEN "\e[32m"
+# define YELLOW "\e[33m"
+# define RED "\e[31m"
+# define RESET "\e[0m"
 
 class Bureaucrat; //서로 다른 클래스가 서로를 이용하는 경우 따로 클래스 선언을 해 줘야 한다 (헤더는 컴파일러에 적용되는 것임)
 

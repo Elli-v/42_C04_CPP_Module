@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 02:07:41 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/27 04:06:57 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 16:58:20 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ const char* Form::NotSignedException::what() const throw()
 
 std::ostream &operator<<(std::ostream &os, Form const &form)
 {
+	os << CYAN;
 	os << "[Form]" << std::endl;
 	os << "Form name: " << form.getName() << std::endl;
 	os << "grade sign: " << form.getGradeSign() << std::endl;
@@ -86,5 +87,6 @@ std::ostream &operator<<(std::ostream &os, Form const &form)
 			os << "Signed!" << std::endl;
 		else
 			os << "Not Signed" << std::endl;
+	os << RESET;
 	return (os);
 }
