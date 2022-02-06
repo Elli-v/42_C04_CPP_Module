@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 01:06:02 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/29 01:31:11 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/06 18:50:12 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,109 @@
 
 Base * generate()
 {
-	int n = rand() % 3;
-	if (n == 0)
+	srand(time(NULL));
+	int i = rand();
+	if (i % 3 == 0)
 		return new A();
-	else if (n == 1)
+	else if (i % 3 == 1)
 		return new B();
 	else
-		return new C();	
+		return new C();
 }
 
 void	identify(Base* base)
 {
-	if (dynamic_cast<A *>(base))
-		std::cout << "A" << std::endl;
-	else if (dynamic_cast<B *>(base))
-		std::cout << "B" << std::endl;
-	else
-		std::cout << "C" << std::endl;	
+	if (dynamic_cast<A*>(base))
+	{
+		std::cout << "Real class : A\n";
+		return ;
+	}
+	else if (dynamic_cast<B*>(base))
+	{
+		std::cout << "Real class : B\n";
+		return ;
+	}
+	else if (dynamic_cast<C*>(base))
+	{
+		std::cout << "Real class : C\n";
+		return ;
+	}
+	std::cerr << "This pointer cannot cast because it does not include A, B nor C\n";
+}
+
+void	identify2(Base& base)
+{
+	Base check;
+	try
+	{
+		check = dynamic_cast<A&>(base);
+		std::cout << "Real class : A\n";
+	}
+	catch(std::exception& e)
+	{
+		try
+		{
+			check = dynamic_cast<B&>(base);
+			std::cout << "Real class : B\n";
+		}
+		catch(std::exception& e)
+		{
+			try
+			{
+				check = dynamic_cast<C&>(base);
+				std::cout << "Real class : C\n";
+			}
+			catch(std::exception& e)
+			{
+				std::cerr << "This reference cannot cast because ";
+				std::cerr << e.what() << std::endl;
+
+			}
+		}
+	}
 }
 
 int	main()
 {
-	srand(time(NULL));
-	for (int i = 0; i < 10; ++i)
-	{
-		Base *base = generate();
-		identify(base);
-	}
-	return 0;
+	Base*	testA = new A();
+	Base*	testB = new B();
+	Base*	testC = new C();
+	Base*	testN = new Base();
+
+	Base	base;
+	A		a;
+	B		b;
+	C		c;
+	Base&	refA = a;
+	Base&	refB = b;
+	Base&	refC = c;
+	Base&	refN = base;
+
+	std::cout << ">> test pointer cast <<\n";
+	identify(testA);
+	identify(testB);
+	identify(testC);
+	identify(testN);
+	identify(&refB);
+
+	std::cout << std::endl;
+	std::cout << ">> test reference cast <<\n";
+	identify2(refA);
+	identify2(refB);
+	identify2(refC);
+	identify2(refN);
+	identify2(*testA);
+
+	delete testA;
+	delete testB;
+	delete testC;
+	delete testN;
+
+	std::cout << std::endl;
+	std::cout << ">> test reference cast <<\n";
+
+	Base*	random = generate();
+	identify(random);
+
+	delete random ;
 }
