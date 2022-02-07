@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 04:50:03 by soooh             #+#    #+#             */
-/*   Updated: 2022/02/07 19:21:33 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/07 19:38:27 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ public:
 	typedef typename std::stack<T>::container_type::const_reverse_iterator reconterator;
 	iterator begin();
 	iterator end();
-	conterator begin();
-	conterator end();
+	conterator begin() const;
+	conterator end() const;
 	riterator rbegin();
 	riterator rend();
-	reconterator rbegin();
-	reconterator rend();
+	reconterator rbegin() const;
+	reconterator rend() const;
 };
 #endif
