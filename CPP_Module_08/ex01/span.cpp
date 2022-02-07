@@ -6,7 +6,7 @@
 /*   By: soooh <soooh@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 02:05:23 by soooh             #+#    #+#             */
-/*   Updated: 2022/01/31 03:44:34 by soooh            ###   ########.fr       */
+/*   Updated: 2022/02/07 17:35:12 by soooh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ Span& Span::operator=(const Span &other)
 void Span::addNumber(unsigned int num)
 {
 	if (vec.size() == size)
-		throw( std::length_error("Fully Stored\n"));
+		throw( std::length_error("This container is Full\n"));
 	vec.push_back(num);
 }
 
 void Span::addNumber(std::vector<int>::iterator start, std::vector<int>::iterator end)
 {
-	if (std::distance(start, end) > static_cast<int>(size))
-		throw( std::length_error("Fully Stored\n"));
+	if (std::distance(start, end) > static_cast<int>(size)) //iterator 사이의 크기를 반환한다
+		throw( std::length_error("Don't have enough space\n"));
 	vec.insert(vec.end(), start, end);
 	
 }
@@ -46,7 +46,7 @@ void Span::addNumber(std::vector<int>::iterator start, std::vector<int>::iterato
 int Span::shortestSpan(void)
 {
 	if (vec.size() < 2)
-		throw( std::length_error("Not enough Numbers\n"));
+		throw( std::length_error("shortestSpan: Not enough Numbers\n"));
 	std::vector<int>::iterator start = vec.begin();
 	int ret = INT_MAX;
 	while (start < vec.end())
@@ -64,7 +64,7 @@ int Span::shortestSpan(void)
 int Span::longestSpan(void)
 {
 	if (vec.size() < 2)
-		throw( std::length_error("Not enough Numbers\n"));
+		throw( std::length_error("longestSpan: Not enough Numbers\n"));
 	std::vector<int>::iterator start = vec.begin();
 	int ret = 0;
 	while (start++ < vec.end())

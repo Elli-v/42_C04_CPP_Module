@@ -20,7 +20,7 @@ int main()
 			std::vector<int> v;
             for (int i = 0; i < 10000; i++)
             {
-                v.push_back(i);
+                v.push_back(rand());
             }
 			sp.addNumber(v.begin(), v.end());
             std::cout << sp.shortestSpan() << std::endl;
