@@ -65,6 +65,7 @@ int main(int, char**)
     {
         std::cerr << e.what() << '\n';
     }
+
     try
     {
         numbers[MAX_VAL] = 0;
@@ -75,9 +76,7 @@ int main(int, char**)
     }
 
     for (int i = 0; i < MAX_VAL; i++)
-    {
         numbers[i] = rand();
-    }
     delete [] mirror;//
     return 0;
 }
